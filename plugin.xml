@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='utf-8'?>
+<plugin id="com.test.serviceplugin"
+    version="0.0.1" 
+    xmlns="http://apache.org/cordova/ns/plugins/1.0" 
+    xmlns:android="http://schemas.android.com/apk/res/android">
+        <name>ServicePlugin</name>
+        <js-module name="ServicePlugin" src="www/ServicePlugin.js">
+            <clobbers target="cordova.plugins.ServicePlugin" />
+        </js-module>
+        <platform name="android">
+            <config-file parent="/*" target="res/xml/config.xml">
+                <feature name="ServicePlugin">
+                    <param name="android-package" value="com.test.serviceplugin.ServicePlugin" />
+                </feature>
+            </config-file>
+        <config-file parent="/manifest/application" target="AndroidManifest.xml">
+            <service android:name="com.test.serviceplugin.MyService"/>
+        </config-file>
+        <source-file src="src/android/ServicePlugin.java" target-dir="src/com/test/serviceplugin" />
+        <source-file src="src/android/MyService.java" target-dir="src/com/test/serviceplugin" />
+    </platform>
+</plugin>
